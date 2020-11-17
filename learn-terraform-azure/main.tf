@@ -3,7 +3,7 @@ terraform {
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
-      version = ">= 2.26"
+      version = ">= 2.25"
     }
   }
 }
@@ -15,9 +15,4 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
   name     = "myTFResourceGroup"
   location = "westus2"
-
-  tags = {
-      Environment = "Terraform Getting Started"
-      Team = "DevOps"
-  }
 }
