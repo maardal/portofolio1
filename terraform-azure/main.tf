@@ -11,16 +11,6 @@ provider "azurerm" {
   features {}
 }
 
-variable "admin_username" {
-    type = string
-    description = "Administrator user name for virtual machine"
-}
-
-variable "admin_password" {
-    type = string
-    description = "Password must meet Azure complexity requirements"
-}
-
 # Create a resource group
 resource "azurerm_resource_group" "rg" {
   name     = "myTFResourceGroup"
@@ -103,7 +93,7 @@ resource "azurerm_virtual_machine" "vm" {
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04.0-LTS"
+    sku       = lookup(var.sku, var.location)
     version   = "latest"
   }
 
